@@ -1,6 +1,7 @@
 package com.example.mandeep.androidworkshop;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -64,7 +65,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("name", name.getText().toString());
+                    bundle.putString("number", number.getText().toString());
+
                     Intent intent = new Intent(view.getContext(), ContactDetailsActivity.class);
+                    intent.putExtras(bundle);
+
                     view.getContext().startActivity(intent);
                 }
             });
